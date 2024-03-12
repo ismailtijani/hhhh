@@ -28,7 +28,7 @@ import { ConfigService } from '@nestjs/config';
           },
         },
         defaults: {
-          from: `"Tranos" <${config.get('USER_GMAIL')}>`,
+          from: `"FoodIt" <${config.get('USER_GMAIL')}>`,
         },
         template: {
           dir: join(__dirname, 'templates'),

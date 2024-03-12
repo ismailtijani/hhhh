@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { UsesrModule } from './usesr/usesr.module';
+import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { AdminModule } from './admin/admin.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './usesr/entities/user.entity';
+import { User } from './user/entities/user.entity';
 import { EmailModule } from './email/email.module';
 
 @Module({
@@ -31,7 +31,7 @@ import { EmailModule } from './email/email.module';
         synchronize: true,
       }),
     }),
-    UsesrModule,
+    UserModule,
     AuthModule,
     AdminModule,
     EmailModule,

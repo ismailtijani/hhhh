@@ -1,5 +1,5 @@
 import { Exclude } from 'class-transformer';
-import { UserRole } from 'src/typeDef';
+import { UserRole } from 'src/typeDef.dto';
 import * as bcrypt from 'bcrypt';
 import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { ApiHideProperty } from '@nestjs/swagger';
@@ -9,7 +9,7 @@ export class User {
   /** The User Id (Primary Key)
    */
   @PrimaryGeneratedColumn({ type: 'bigint' })
-  id: string;
+  id: number;
 
   @Column({ nullable: false })
   name: string;
@@ -24,6 +24,9 @@ export class User {
 
   @Column({ type: 'enum', enum: UserRole, default: UserRole.User })
   role: UserRole;
+
+  @Column({ nullable: true })
+  refreshToken: string;
 
   //Hashing User plain text password before saving using Entity Listener
   @BeforeInsert()
