@@ -46,8 +46,9 @@ export class AuthController {
   /** API Endpoint to Logout User */
   @Get('logout')
   @UseGuards(JwtGuard)
-  logout(@Req() req: Request) {
-    return this.authService.logout(req.user.id);
+  async logout(@Req() req: Request) {
+    await this.authService.logout(req.user.id);
+    return 'You have successfully logout of the system, see you soon!';
   }
 
   /** API Endpoint to get Refresh Tokens */

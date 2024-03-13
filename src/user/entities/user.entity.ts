@@ -25,7 +25,9 @@ export class User {
   @Column({ type: 'enum', enum: UserRole, default: UserRole.User })
   role: UserRole;
 
+  @ApiHideProperty()
   @Column({ nullable: true })
+  @Exclude() //Exlcude password from response
   refreshToken: string;
 
   //Hashing User plain text password before saving using Entity Listener
